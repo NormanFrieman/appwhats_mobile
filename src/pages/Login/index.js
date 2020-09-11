@@ -17,6 +17,10 @@ export default function Login(){
         navigation.navigate('Register')
     }
 
+    function chatpage(){
+        navigation.navigate('Chatpage')
+    }
+
     return (
         <View style={style.container}>
             <View style={style.header}>
@@ -27,7 +31,7 @@ export default function Login(){
                         color="#000"
                     />
                     &nbsp;
-                    Appwhats    
+                    Appwhats
                 </Text>
                 <Text style={style.txtHeader}>Seja bem-vindo</Text>
             </View>
@@ -57,7 +61,12 @@ export default function Login(){
                     placeholder="Digite sua senha"
                 />
                 <TouchableOpacity style={style.btnInp}>
-                    <Text style={style.txtBtn}>Fazer Login</Text>
+                    <Text 
+                        style={style.txtBtn}
+                        onPress={() => chatpage()}
+                    >
+                        Fazer Login
+                    </Text>
                 </TouchableOpacity>
                 <Text style={style.txtCommands}>Esqueceu sua senha?</Text>
                 <Text

@@ -19,11 +19,12 @@ export default StyleSheet.create({
     },
     txtInp:{
         fontSize: 24,
-        marginBottom: 4,
+        marginBottom: -4,
     },
     input: {
         fontSize: 24,
         height: 52,
+        marginBottom: 16,
     },
     btnInp: {
         alignItems: 'center',
