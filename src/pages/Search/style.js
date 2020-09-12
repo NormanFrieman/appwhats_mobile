@@ -8,14 +8,14 @@ export default StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         alignItems: 'center',
         height: 56,
     },
     txtHeader: {
         marginHorizontal: 20,
         color: '#000',
-        fontSize: 24,
+        fontSize: 20,
     },
     contact: {
         flexDirection: 'row',

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {View, Text, TextInput, TouchableOpacity} from 'react-native'
+import {View, Text, TextInput, TouchableOpacity, Alert} from 'react-native'
 import {Feather} from '@expo/vector-icons'
 import {useFonts, Inter_500Medium} from '@expo-google-fonts/inter'
 import {useNavigation} from '@react-navigation/native'
@@ -19,6 +19,16 @@ export default function Login(){
 
     function chatpage(){
         navigation.navigate('Chatpage')
+/*        Alert.alert(
+            "Erro de login",
+            "Falhou ai",
+            [
+                {
+                    text: "OK",
+                }
+            ],
+            {cancelable: false}
+        )*/
     }
 
     return (

@@ -23,16 +23,32 @@ export default function Chatpage(){
         navigation.navigate('Talkflow')
     }
 
+    function openOptions(){
+
+    }
+
     return (
         <View style={style.container}>
             <View style={style.header}>
                 <Text style={style.txtHeader}>Chatpage</Text>
-                <Feather
-                    style={style.txtHeader}
-                    name="search"
-                    color="#fff"
-                    onPress={() => search()}
-                />
+                <View style={{
+                    flexDirection: 'row'
+                }}>
+                    <TouchableOpacity onPress={() => search()}>
+                        <Feather
+                            style={style.txtHeader}
+                            name="search"
+                            color="#fff"
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => openOptions()}>
+                        <Feather
+                            style={style.txtHeader}
+                            name="more-vertical"
+                            color="#fff"
+                        />
+                    </TouchableOpacity>
+                </View>
             </View>
             <ScrollView>
                 <TouchableOpacity style={style.contact} onPress={() => talkflow()}>

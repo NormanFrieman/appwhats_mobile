@@ -13,16 +13,26 @@ export default function Search(){
     })
     const navigation = useNavigation()
 
+    function chatpage(Search){
+        navigation.navigate('Chatpage', Search)
+    }
+
     return (
         <View style={style.container}>
             <View style={style.header}>
-                <Feather
-                    style={style.txtHeader}
-                    name="search"
-                />
+                <TouchableOpacity onPress={() => chatpage(Search)}>
+                    <Feather
+                        style={style.txtHeader}
+                        name="arrow-left"
+                    />
+                </TouchableOpacity>
                 <TextInput
                     style={style.txtHeader}
                     placeholder="Pesquisar"
+                />
+                <Feather
+                    style={style.txtHeader}
+                    name="search"
                 />
             </View>
             <ScrollView>
