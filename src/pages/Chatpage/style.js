@@ -23,8 +23,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        paddingHorizontal: 20,
-        paddingVertical: 20,
+        paddingBottom: 20,
     },
     img: {
         width: 40,
@@ -40,5 +39,21 @@ export default StyleSheet.create({
     },
     msg: {
         fontSize: 16,
+    },
+    trash: {
+        fontSize: 24,
+    },
+    btnUpdate: {
+        marginVertical: 20,
+        marginHorizontal: 20,
+        backgroundColor: "#000",
+        borderRadius: 50,
+        width: 40,
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    btnFeather: {
+        fontSize: 20,
     }
 })

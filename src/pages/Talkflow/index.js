@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {View, Text, TextInput, TouchableOpacity, Image, ScrollView} from 'react-native'
+import React, {useState, useEffect} from 'react'
+import {View, Text, TextInput, TouchableOpacity, Image, ScrollView, FlatList} from 'react-native'
 import {Feather} from '@expo/vector-icons'
 import {useFonts, Inter_500Medium} from '@expo-google-fonts/inter'
 import {useNavigation} from '@react-navigation/native'
@@ -12,6 +12,12 @@ export default function Talkflow(){
         Inter_500Medium
     })
     const navigation = useNavigation()
+    const [contact, setContact] = useState([])
+
+    useEffect(() => async function(){
+        const contact = [`${await AsyncStorage.getItem('contact')}`]
+        setContact(contact)
+    })
 
     function chatpage(Talkflow){
         navigation.navigate('Chatpage', Talkflow)
@@ -26,7 +32,13 @@ export default function Talkflow(){
                         name="arrow-left"
                     />
                 </TouchableOpacity>
-                <Text style={style.txtHeader}>NormanFrieman</Text>
+                <FlatList
+                    data={contact}
+                    keyExtractor={cont => cont}
+                    renderItem={({item: cont}) => (
+                        <Text style={style.txtHeader}>{cont}</Text>
+                    )}
+                />
             </View>
             <ScrollView style={style.messages}>
                 <View style={style.contact}>

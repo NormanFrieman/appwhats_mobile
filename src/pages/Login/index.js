@@ -5,6 +5,8 @@ import {useFonts, Inter_500Medium} from '@expo-google-fonts/inter'
 import {useNavigation} from '@react-navigation/native'
 import AsyncStorage from '@react-native-community/async-storage'
 
+import connection from '../../connection'
+
 import style from './style'
 
 export default function Login(){
@@ -12,23 +14,50 @@ export default function Login(){
         Inter_500Medium
     })
     const navigation = useNavigation()
+    const [username, setUsername] = useState('')
+    const [pass, setPass] = useState('')
 
     function register(){
         navigation.navigate('Register')
     }
 
-    function chatpage(){
-        navigation.navigate('Chatpage')
-/*        Alert.alert(
-            "Erro de login",
-            "Falhou ai",
-            [
-                {
-                    text: "OK",
+    async function chatpage(){
+        if(username == '' && pass == ''){
+            Alert.alert(
+                "Erro de login",
+                "Há campos sem preencher",
+                [
+                    {
+                        text: "OK",
+                    }
+                ],
+                {cancelable: false}
+            )
+        }else{
+            try{
+                const data = {
+                    username: username,
+                    pass: pass
                 }
-            ],
-            {cancelable: false}
-        )*/
+
+                await connection.put('/login', data)
+                await AsyncStorage.setItem('username', username)
+
+                navigation.navigate('Chatpage')
+            }
+            catch{
+                Alert.alert(
+                    "Erro de login",
+                    "Falhou ai",
+                    [
+                        {
+                            text: "OK",
+                        }
+                    ],
+                    {cancelable: false}
+                )
+            }
+        }
     }
 
     return (
@@ -52,11 +81,14 @@ export default function Login(){
                         size={24}
                         color="#000"
                     />
+                    &nbsp;
                     Username
                 </Text>
                 <TextInput
                     style={style.input}
                     placeholder="Digite seu username"
+                    value={username}
+                    onChangeText={(text) => setUsername(text)}
                 />
                 <Text style={style.txtInp}>
                     <Feather 
@@ -64,11 +96,14 @@ export default function Login(){
                         size={24}
                         color="#000"
                     />
+                    &nbsp;
                     Senha
                 </Text>
                 <TextInput
                     style={style.input}
                     placeholder="Digite sua senha"
+                    value={pass}
+                    onChangeText={(text) => setPass(text)}
                 />
                 <TouchableOpacity style={style.btnInp}>
                     <Text 

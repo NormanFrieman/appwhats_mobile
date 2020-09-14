@@ -25,6 +25,7 @@ export default StyleSheet.create({
         fontSize: 24,
         height: 52,
         marginBottom: 16,
+        color: '#000'
     },
     btnInp: {
         alignItems: 'center',
